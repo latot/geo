@@ -58,18 +58,18 @@ impl<T: CoordNum> From<(T, T)> for Coord<2, T> {
         }
 }
 
-impl<T: CoordNum> From<[T; 2]> for Coord<2, T> {
+impl<T: CoordNum, const N: usize> From<[T; N]> for Coord<N, T> {
         #[inline]
-        fn from(coords: [T; 2]) -> Self {
+        fn from(coords: [T; N]) -> Self {
                 Coord {
                         coords: coords.into(),
                 }
         }
 }
 
-impl<T: CoordNum, const N: usize> From<Point<T>> for Coord<N, T> {
+impl<T: CoordNum, const N: usize> From<Point<N, T>> for Coord<N, T> {
         #[inline]
-        fn from(point: Point<T>) -> Self {
+        fn from(point: Point<N, T>) -> Self {
                 point.0
         }
 }
